@@ -71,7 +71,10 @@ function AdminServices() {
     } finally { setIsLoading(false); }
   }, [accessToken]);
 
-  useEffect(() => { /* eslint-disable-next-line react-hooks/set-state-in-effect */ void loadServices(emptyFilters); }, [loadServices]);
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => void loadServices(emptyFilters), 0);
+    return () => window.clearTimeout(timeoutId);
+  }, [loadServices]);
 
   const searchServices = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); const next = { ...filters, search: filters.search.trim() }; setFilters(next); setActiveFilters(next); void loadServices(next); };
   const clearFilters = () => { setFilters(emptyFilters); setActiveFilters(emptyFilters); void loadServices(emptyFilters); };

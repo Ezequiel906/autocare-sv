@@ -39,7 +39,10 @@ function AdminServiceHistoryDetail() {
     finally { setIsLoading(false); }
   }, [accessToken, id]);
 
-  useEffect(() => { /* eslint-disable-next-line react-hooks/set-state-in-effect */ void loadRecord(); }, [loadRecord]);
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => void loadRecord(), 0);
+    return () => window.clearTimeout(timeoutId);
+  }, [loadRecord]);
   if (isLoading) return <div className="admin-history-detail-loading" role="status" aria-label="Cargando detalle del historial"><span /><span /><span /><span /></div>;
   if (!record) {
     const notFound = detailState === "invalid-id" || detailState === "not-found";

@@ -38,7 +38,10 @@ function AdminServiceDetail() {
     catch (error) { if (axios.isAxiosError(error) && error.response?.status === 401) setState("invalid-session"); else if (axios.isAxiosError(error) && error.response?.status === 403) setState("forbidden"); else if (axios.isAxiosError(error) && error.response?.status === 404) setState("not-found"); else setState("error"); }
     finally { setIsLoading(false); }
   }, [accessToken, id]);
-  useEffect(() => { /* eslint-disable-next-line react-hooks/set-state-in-effect */ void loadService(); }, [loadService]);
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => void loadService(), 0);
+    return () => window.clearTimeout(timeoutId);
+  }, [loadService]);
 
   const openEdit = () => { if (!service) return; setFormError(""); reset({ name: service.name, slug: service.slug, description: service.description, category: service.category, price: Number(service.price), duration: service.duration, active: service.active }); setIsEditing(true); };
   const closeEdit = () => { if (!isSaving) { setIsEditing(false); setFormError(""); } };
