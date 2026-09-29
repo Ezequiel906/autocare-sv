@@ -1,0 +1,201 @@
+.client-layout {
+  min-height: 680px;
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.client-sidebar {
+  min-width: 0;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-surface);
+  background: var(--color-primary);
+}
+
+.client-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.client-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.client-sidebar__brand > span {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: var(--color-accent);
+  border-radius: var(--radius-sm);
+}
+
+.client-sidebar__brand div {
+  display: grid;
+  gap: 2px;
+}
+
+.client-sidebar__brand strong {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+}
+
+.client-sidebar__brand small {
+  color: var(--color-text-secondary);
+  font-size: 0.68rem;
+}
+
+.client-sidebar__menu-button {
+  width: 40px;
+  height: 40px;
+  display: none;
+  place-items: center;
+  color: var(--color-surface);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.client-sidebar__navigation {
+  margin-top: 38px;
+  display: grid;
+  gap: 7px;
+}
+
+.client-sidebar__link {
+  min-height: 46px;
+  padding: 0 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--color-border);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.client-sidebar__link:hover {
+  color: var(--color-surface);
+  background: var(--color-secondary);
+  transform: translateX(3px);
+}
+
+.client-sidebar__link--active {
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.client-sidebar__link--active:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.client-sidebar__logout {
+  margin-top: auto;
+}
+
+.client-sidebar__footer {
+  margin-top: 16px;
+  padding: 16px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-secondary);
+  font-size: 0.7rem;
+}
+
+.client-layout__content {
+  min-width: 0;
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--color-background);
+}
+
+.client-layout a:focus-visible,
+.client-layout button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 820px) {
+  .client-layout {
+    min-height: 620px;
+    grid-template-columns: 1fr;
+  }
+
+  .client-sidebar {
+    padding: 15px 16px;
+  }
+
+  .client-sidebar__menu-button {
+    display: grid;
+  }
+
+  .client-sidebar__navigation {
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition:
+      max-height var(--transition-slow),
+      margin var(--transition-base),
+      opacity var(--transition-base),
+      transform var(--transition-base),
+      visibility var(--transition-base);
+  }
+
+  .client-sidebar__navigation--open {
+    max-height: 260px;
+    margin-top: 16px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .client-sidebar__link:hover {
+    transform: none;
+  }
+
+  .client-sidebar__footer {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .client-layout {
+    border-radius: var(--radius-md);
+  }
+
+  .client-layout__content {
+    padding: 24px 16px 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-layout *,
+  .client-layout *::before,
+  .client-layout *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

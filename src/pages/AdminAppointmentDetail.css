@@ -1,0 +1,478 @@
+.admin-appointment-detail {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.admin-appointment-detail__back {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.admin-appointment-detail__back:hover {
+  color: var(--color-accent);
+  transform: translateX(-2px);
+}
+
+.admin-appointment-detail__header {
+  padding: clamp(22px, 4vw, 34px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-appointment-detail__header > div > span {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.admin-appointment-detail__header h1 {
+  margin-top: 6px;
+  font-size: clamp(2rem, 5vw, 3.3rem);
+}
+
+.admin-appointment-detail__header p {
+  margin-top: 9px;
+  color: var(--color-border);
+  font-size: 0.84rem;
+}
+
+.admin-appointment-detail-status {
+  padding: 8px 11px;
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.admin-appointment-detail-status--pending { color: var(--color-accent); }
+.admin-appointment-detail-status--confirmed { color: var(--color-surface); }
+.admin-appointment-detail-status--in-service { color: var(--color-accent); }
+.admin-appointment-detail-status--completed { color: var(--color-success); }
+.admin-appointment-detail-status--cancelled { color: var(--color-error); }
+
+.admin-appointment-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-detail-panel {
+  min-width: 0;
+  padding: clamp(20px, 3vw, 28px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.admin-detail-panel:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-detail-panel--wide {
+  grid-column: 1 / -1;
+}
+
+.admin-detail-panel__heading {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.admin-detail-panel__heading > span {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.admin-detail-panel__heading h2 {
+  font-size: 1rem;
+}
+
+.admin-detail-panel > h3 {
+  font-size: 1.15rem;
+}
+
+.admin-detail-panel__subtitle {
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.admin-detail-data {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-detail-data--compact {
+  margin-top: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-detail-data > div {
+  min-width: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-detail-data dt {
+  color: var(--color-text-secondary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.admin-detail-data dd {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-wrap: anywhere;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.admin-detail-data dd svg {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.admin-detail-services {
+  display: grid;
+  gap: 9px;
+}
+
+.admin-detail-services article {
+  padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background: var(--color-background);
+  border-radius: var(--radius-sm);
+}
+
+.admin-detail-services article > div {
+  min-width: 0;
+}
+
+.admin-detail-services article strong,
+.admin-detail-services article span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.admin-detail-services article > div > strong {
+  font-size: 0.84rem;
+}
+
+.admin-detail-services article span {
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+}
+
+.admin-detail-services article > strong {
+  flex-shrink: 0;
+  font-size: 0.84rem;
+}
+
+.admin-detail-total {
+  margin-top: 16px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+}
+
+.admin-detail-total span {
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.admin-detail-notes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.admin-detail-notes article {
+  min-width: 0;
+  padding: 14px;
+  background: var(--color-background);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+}
+
+.admin-detail-notes h3 {
+  font-size: 0.78rem;
+}
+
+.admin-detail-notes p,
+.admin-detail-history p,
+.admin-detail-empty-copy {
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+  color: var(--color-text-secondary);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.admin-detail-notes:has(+ .admin-detail-work-form) {
+  grid-template-columns: 1fr;
+}
+
+.admin-detail-work-form {
+  margin-top: 16px;
+  padding: clamp(16px, 3vw, 22px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-detail-form-field {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.admin-detail-form-label {
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.admin-detail-form-input,
+.admin-detail-form-textarea {
+  width: 100%;
+  padding: 11px 12px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.82rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.admin-detail-form-input {
+  min-height: 44px;
+}
+
+.admin-detail-form-textarea {
+  min-height: 112px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.admin-detail-form-input:focus,
+.admin-detail-form-textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.admin-detail-work-form__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-detail-work-form__actions button {
+  min-height: 44px;
+  padding: 0 18px;
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.admin-detail-work-form__actions button:hover:not(:disabled) {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.admin-detail-work-form__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.admin-detail-history > h3 {
+  margin-top: 18px;
+  font-size: 0.9rem;
+}
+
+.admin-appointment-detail__actions {
+  padding: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-appointment-detail__actions button,
+.admin-appointment-detail-state :is(a, button) {
+  min-height: 44px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.admin-appointment-detail__actions button:hover:not(:disabled),
+.admin-appointment-detail-state :is(a, button):hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.admin-appointment-detail__actions .admin-appointment-detail__cancel {
+  color: var(--color-error);
+  background: var(--color-surface);
+  border-color: var(--color-error);
+}
+
+.admin-appointment-detail__actions .admin-appointment-detail__cancel:hover:not(:disabled) {
+  color: var(--color-surface);
+  background: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.admin-appointment-detail__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.admin-appointment-detail-loading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-appointment-detail-loading span {
+  min-height: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  animation: admin-detail-pulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes admin-detail-pulse {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+
+.admin-appointment-detail-state {
+  min-height: 480px;
+  padding: 40px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-appointment-detail-state > svg { color: var(--color-accent); }
+.admin-appointment-detail-state p { color: var(--color-text-secondary); }
+.admin-appointment-detail-state > div { margin-top: 8px; display: flex; gap: 9px; }
+
+.admin-appointment-detail :is(a, button):focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .admin-appointment-detail__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-appointment-detail-grid,
+  .admin-appointment-detail-loading {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-detail-panel--wide { grid-column: auto; }
+  .admin-detail-notes,
+  .admin-detail-data--compact,
+  .admin-detail-work-form { grid-template-columns: 1fr; }
+
+  .admin-detail-work-form__actions {
+    grid-column: auto;
+  }
+
+  .admin-appointment-detail__actions,
+  .admin-appointment-detail-state > div {
+    flex-direction: column;
+  }
+
+  .admin-appointment-detail__actions button,
+  .admin-appointment-detail-state :is(a, button),
+  .admin-detail-work-form__actions button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-appointment-detail *,
+  .admin-appointment-detail *::before,
+  .admin-appointment-detail *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
