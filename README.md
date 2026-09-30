@@ -1,75 +1,224 @@
-# React + TypeScript + Vite
+# AutoCare SV
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para la gestión de servicios automotrices, desarrollada como proyecto **Full Stack**, con una interfaz moderna y responsive para clientes y administradores.
 
-Currently, two official plugins are available:
+El frontend permite a los clientes registrarse, iniciar sesión, gestionar sus vehículos, agendar citas y consultar su historial de servicios. También incluye un área administrativa para la gestión de la operación del lubricentro.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Demo
 
-## React Compiler
+**Aplicación:** https://autocare-sv.vercel.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> El backend se encuentra desplegado en Layerbase y puede entrar en hibernación después de un período de inactividad. Por ello, la primera petición después de un tiempo sin uso puede tardar unos segundos mientras el servicio vuelve a estar disponible.
 
-## Expanding the ESLint configuration
+### Cuenta de demostración — Administrador
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+Email: autocareSV@gmail.com
+Contraseña: AutoCare2026
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+> Estas credenciales corresponden únicamente a la cuenta de demostración del proyecto.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Funcionalidades
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Área pública
 
+* Página principal del lubricentro.
+* Presentación de servicios disponibles.
+* Detalle individual de cada servicio.
+* Formulario para agendar citas.
+* Registro de usuarios.
+* Inicio de sesión.
+* Diseño responsive para dispositivos móviles, tablets y escritorio.
+
+### Área de clientes
+
+* Resumen de la cuenta.
+* Gestión de vehículos.
+* Visualización de citas.
+* Detalle de citas.
+* Historial de servicios.
+* Consulta de la próxima cita.
+* Acciones rápidas para agendar citas y agregar vehículos.
+
+### Área administrativa
+
+* Acceso protegido mediante autenticación.
+* Dashboard administrativo.
+* Gestión de la información relacionada con la operación del lubricentro.
+* Control de acceso basado en roles.
+
+### Autenticación
+
+* Registro e inicio de sesión mediante API.
+* Autenticación basada en JWT.
+* Manejo de roles `CUSTOMER` y `ADMIN`.
+* Protección de las áreas privadas.
+* Persistencia de sesión mediante el contexto de autenticación.
+* Manejo de errores de autenticación y sesiones inválidas.
+
+## Tecnologías
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+* React Router
+* React Hook Form
+* Zod
+* Axios
+* date-fns
+* Lucide React
+* CSS
+
+### Herramientas
+
+* Git
+* GitHub
+* VS Code
+* Vercel
+
+## Arquitectura
+
+El proyecto está organizado por responsabilidades para mantener una estructura clara y facilitar el mantenimiento.
+
+Entre sus principales elementos se encuentran:
+
+* Componentes reutilizables.
+* Contexto de autenticación.
+* Layouts para las diferentes áreas de la aplicación.
+* Páginas públicas, de clientes y administrativas.
+* Rutas protegidas.
+* Validación de formularios.
+* Integración con la API mediante Axios.
+
+La aplicación utiliza un contexto de autenticación para administrar la sesión del usuario y controlar el acceso a las diferentes áreas de la aplicación.
+
+Las peticiones HTTP al backend se realizan mediante Axios.
+
+## Backend
+
+El frontend consume una API REST desarrollada específicamente para este proyecto.
+
+**Repositorio del backend:**
+
+https://github.com/Ezequiel906/autocare-sv-backend
+
+El backend se encarga de:
+
+* Autenticación y autorización.
+* Gestión de usuarios.
+* Gestión de vehículos.
+* Gestión de citas.
+* Gestión del historial de servicios.
+* Gestión de servicios del lubricentro.
+* Control de roles.
+
+## Instalación
+
+### Requisitos
+
+* Node.js
+* npm
+* Backend de AutoCare SV ejecutándose localmente o disponible mediante su URL.
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Ezequiel906/autocare-sv.git
+cd autocare-sv
 ```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Configurar variables de entorno
+
+Crear un archivo `.env` en la raíz del proyecto:
+
+```env
+# URL base publica del backend, sin barra final.
+VITE_API_URL=http://localhost:3000
+```
+
+Si el backend está desplegado, utiliza la URL correspondiente del backend.
+
+### 4. Ejecutar en desarrollo
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en:
+
+```text
+http://localhost:5173
+```
+
+## Scripts disponibles
+
+### Desarrollo
+
+```bash
+npm run dev
+```
+
+Inicia el servidor de desarrollo.
+
+### Build
+
+```bash
+npm run build
+```
+
+Genera la versión de producción.
+
+### Lint
+
+```bash
+npm run lint
+```
+
+Ejecuta las comprobaciones de linting del proyecto.
+
+### Preview
+
+```bash
+npm run preview
+```
+
+Sirve localmente la versión generada para producción.
+
+## Deployment
+
+El frontend está desplegado en **Vercel**.
+
+**Demo:**
+
+https://autocare-sv.vercel.app
+
+El backend está desplegado de forma independiente y se conecta con el frontend mediante la URL configurada en las variables de entorno.
+
+## Desarrollo con asistencia de IA
+
+Durante el desarrollo del proyecto se utilizó **Codex** como herramienta de asistencia para la implementación, revisión y depuración del código.
+
+La implementación se realizó de forma incremental, manteniendo la estructura del proyecto y validando las funcionalidades mediante pruebas locales y en producción.
+
+## Responsive Design
+
+La interfaz fue desarrollada teniendo en cuenta diferentes tamaños de pantalla:
+
+* Escritorio.
+* Tablets.
+* Dispositivos móviles.
+
+Las principales áreas de la aplicación cuentan con navegación y componentes adaptados para diferentes dispositivos.
+
+## Licencia
+
+Este proyecto fue desarrollado como proyecto personal de portafolio.
